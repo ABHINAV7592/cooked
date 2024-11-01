@@ -1,133 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dark Humor Diary Comic Generator</title>
-  <style>
-    body { font-family: Arial, sans-serif; text-align: center; background-color: #222; color: #eee; }
-    h1 { color: #ff4757; }
-    #comic-container { margin-top: 20px; display: flex; flex-wrap: wrap; justify-content: center; }
-    .comic-panel-container { margin: 10px; display: inline-block; text-align: center; }
-    canvas { width: 300px; height: 200px; border: 4px solid #ff4757; border-radius: 8px; }
-    textarea { width: 80%; height: 100px; margin-top: 20px; background-color: #333; color: #fff; border: 1px solid #555; }
-    button { margin: 10px; background-color: #ff4757; color: #fff; border: none; padding: 10px; cursor: pointer; }
-    button:hover { background-color: #ff6b81; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Day That Couldn't Get Any Worse</title>
+    <link rel="stylesheet" href="comic.css"> <!-- Link to CSS file -->
 </head>
 <body>
-  <h1>Dark Humor Diary Comic Generator</h1>
-  <textarea id="diary-input" placeholder="Enter your diary entry here..."></textarea><br>
-  <button onclick="generateComic()">Generate Comic Panels</button>
+    <div class="background-image"></div> <!-- Blurred Background Image -->
 
-  <div id="comic-container"></div>
-
-  <script>
-    function generateComic() {
-      const container = document.getElementById('comic-container');
-      const input = document.getElementById('diary-input').value.trim();
-
-      container.innerHTML = ''; // Clear previous comic panels
-
-      const scenes = input.split('.').filter(line => line.trim() !== '');
-
-      scenes.forEach((scene, index) => {
-        // Create a container for each comic panel and download button
-        const panelContainer = document.createElement('div');
-        panelContainer.className = 'comic-panel-container';
-
-        // Create canvas for each scene
-        const canvas = document.createElement('canvas');
-        canvas.width = 300;
-        canvas.height = 200;
-        const ctx = canvas.getContext('2d');
-
-        // Draw background
-        ctx.fillStyle = '#444'; // Dark background for comic style
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-        // Draw text with a dark humor twist
-        ctx.fillStyle = '#fff';
-        ctx.font = '20px Comic Sans MS';
-        ctx.textAlign = 'center';
-        const darkHumorScene = applyDarkHumor(scene);
-        wrapText(ctx, darkHumorScene, canvas.width / 2, canvas.height / 2, 280, 24);
-
-        // Create a download button for each canvas
-        const downloadButton = document.createElement('button');
-        downloadButton.innerText = 'Download Panel';
-        downloadButton.onclick = () => downloadCanvasAsImage(canvas, `comic_panel_${index + 1}.png`);
-
-        // Append canvas and button to the container
-        panelContainer.appendChild(canvas);
-        panelContainer.appendChild(downloadButton);
-
-        // Append the panel container to the comic container
-        container.appendChild(panelContainer);
-      });
-    }
-
-    // Helper function to download canvas as an image
-    function downloadCanvasAsImage(canvas, filename) {
-      const link = document.createElement('a');
-      link.href = canvas.toDataURL('image/png');
-      link.download = filename;
-      link.click();
-    }
-
-    // Helper function to wrap text
-    function wrapText(context, text, x, y, maxWidth, lineHeight) {
-      const words = text.split(' ');
-      let line = '';
-      let lineY = y;
-
-      words.forEach((word, i) => {
-        const testLine = line + word + ' ';
-        const metrics = context.measureText(testLine);
-        const testWidth = metrics.width;
-        
-        if (testWidth > maxWidth && i > 0) {
-          context.fillText(line, x, lineY);
-          line = word + ' ';
-          lineY += lineHeight;
-        } else {
-          line = testLine;
-        }
-      });
-
-      context.fillText(line, x, lineY);
-    }
-
-    // Function to apply dark humor to the input scene
-    function applyDarkHumor(scene) {
-    const darkHumorPhrases = [
-        "But hey, at least I survived!",
-        "Just another day in paradise, right?",
-        "I really thought I was going to die this time.",
-        "Life is a joke, and I forgot the punchline.",
-        "If only my therapist could see this...",
-        "At least my plants are thriving in my misery!",
-        "When life gives you lemons, throw them back!",
-        "Every day feels like a rerun of a bad sitcom.",
-        "Who knew that adulting came with this many plot twists?",
-        "They say laughter is the best medicine. Too bad I'm allergic!",
-        "At this point, I should charge rent to my regrets.",
-        "Just me and my existential dread, living the dream.",
-        "They say the first step is admitting it... So, I'm definitely not doing that.",
-        "If I had a dollar for every time I messed up, I could buy my happiness back.",
-        "Some days I amaze myself. Other days, I put my keys in the fridge.",
-        "I can't tell if I'm living my best life or just the best version of a train wreck.",
-        "If you can't laugh at your problems, then you're just left crying alone.",
-        "Every silver lining has a cloud lurking nearby.",
-        "I finally found my purpose in life: to be a cautionary tale.",
-        "At this point, my life is just a series of unfortunate events.",
-        "If my life were a movie, it would definitely be a horror-comedy."
-    ];
-
-    const randomHumor = darkHumorPhrases[Math.floor(Math.random() * darkHumorPhrases.length)];
-    return `${scene.trim()}... ${randomHumor}`;
-}
-
-  </script>
+    <div class="comic-container">
+        <h1 class="title">Comic Story</h1>
+        <div class="comic-grid">
+            <!-- Add your comic images in sequence -->
+            <div class="comic-panel"><img src="1.png" alt="Comic Image 1"></div>
+            <div class="comic-panel"><img src="2.png" alt="Comic Image 2"></div>
+            <div class="comic-panel"><img src="3.png" alt="Comic Image 3"></div>
+            <div class="comic-panel"><img src="4.png" alt="Comic Image 4"></div>
+            <div class="comic-panel"><img src="5.png" alt="Comic Image 5"></div>
+            <div class="comic-panel"><img src="6.png" alt="Comic Image 6"></div>
+            <div class="comic-panel"><img src="7.png" alt="Comic Image 7"></div>
+        </div>
+    </div>
 </body>
 </html>
