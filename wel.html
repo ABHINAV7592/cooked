@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to My Cooked Up World</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Welcome to My Cooked Up World</h1>
+        <p class="subtitle">A twisted place where curiosity cooks up trouble. Dare to step in?</p>
+        <button class="start-button">Let's Cook</button>
+    </div>
+
+    <div class="void-background">
+        <div class="background-image" style="background-image: url('cooked.jpg');"></div>
+        <div class="background-image" style="background-image: url('cooked.jpg');"></div>
+        <div class="background-image" style="background-image: url('cooked.jpg');"></div>
+    </div>
+
+    <script>
+        document.querySelector(".start-button").addEventListener("click", () => {
+            document.body.classList.add("fade-out");
+            setTimeout(() => {
+                window.location.href = "diary.html";  // Replace with your main content page URL
+            }, 1500);
+        });
+    </script>
+</body>
+</html>

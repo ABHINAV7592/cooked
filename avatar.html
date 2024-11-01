@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avatar Creation</title>
+    <link rel="stylesheet" href="login.css"> <!-- Link to the CSS file -->
+</head>
+<body>
+
+    <form class="form" autocomplete="off">
+        <div class="control">
+            <h1>Create Your Avatar</h1>
+        </div>
+
+        <!-- Avatar Preview Section -->
+        <div class="control avatar-preview">
+            <div id="avatarContainer" class="avatar-container" style="background-image: url('cartoon.jpg'); background-color: #212121;"></div>
+        </div>
+
+        <!-- Upload Avatar Image -->
+        <div class="control block-cube block-input">
+            <label for="uploadAvatar">Upload Avatar Image</label>
+            <input type="file" id="uploadAvatar" accept="image/*" onchange="previewAvatar(event)">
+            <div class="bg-top">
+                <div class="bg-inner"></div>
+            </div>
+            <div class="bg-right">
+                <div class="bg-inner"></div>
+            </div>
+            <div class="bg">
+                <div class="bg-inner"></div>
+            </div>
+        </div>
+
+        <!-- Change Skin Color -->
+        <div class="control block-cube block-input">
+            <label for="skinColor">Choose Background Color</label>
+            <input type="color" id="skinColor" onchange="changeSkinColor(event)">
+            <div class="bg-top">
+                <div class="bg-inner"></div>
+            </div>
+            <div class="bg-right">
+                <div class="bg-inner"></div>
+            </div>
+            <div class="bg">
+                <div class="bg-inner"></div>
+            </div>
+        </div>
+
+        <!-- Save Avatar Button -->
+        <button class="btn block-cube block-cube-hover" type="button" onclick="saveAvatar()">
+            <div class="bg-top">
+                <div class="bg-inner"></div>
+            </div>
+            <div class="bg-right">
+                <div class="bg-inner"></div>
+            </div>
+            <div class="bg">
+                <div class="bg-inner"></div>
+            </div>
+            <div class="text">Save Avatar</div>
+        </button>
+    </form>
+
+    <!-- Final Avatar Display Section (Hidden initially) -->
+    <div id="finalAvatarDisplay" class="final-avatar-display" style="display: none;">
+        <h2>Your Avatar</h2>
+        <div id="finalAvatarContainer" class="avatar-container"></div>
+    </div>
+    
+    <!-- Back Button -->
+    <div class="control">
+        <button class="btn block-cube block-cube-hover" type="button" onclick="goBack()">
+            <div class="bg-top">
+                <div class="bg-inner"></div>
+            </div>
+            <div class="bg-right">
+                <div class="bg-inner"></div>
+            </div>
+            <div class="bg">
+                <div class="bg-inner"></div>
+            </div>
+            <div class="text">Back</div>
+        </button>
+    </div>
+
+    <!-- JavaScript for avatar functions -->
+    <script>
+        // Function to preview the uploaded avatar image
+        function previewAvatar(event) {
+            const avatarContainer = document.getElementById('avatarContainer');
+            const file = event.target.files[0]; // Get the selected file
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    avatarContainer.style.backgroundImage = `url('${e.target.result}')`; // Set to the uploaded image
+                };
+                reader.readAsDataURL(file); // Read the file as a data URL
+            } else {
+                // Reset to default cartoon image if no file is selected
+                avatarContainer.style.backgroundImage = "url('cartoon.jpg')";
+            }
+        }
+
+        // Function to change the background color
+        function changeSkinColor(event) {
+            const avatarContainer = document.getElementById('avatarContainer');
+            avatarContainer.style.backgroundColor = event.target.value; // Change background color
+        }
+
+        // Function to save the avatar
+        function saveAvatar() {
+    alert("Avatar saved!"); // Notify user that the avatar is saved
+    const finalAvatarContainer = document.getElementById('finalAvatarContainer');
+
+    // Set the final avatar display to the cartoon image
+    finalAvatarContainer.style.backgroundImage = "url('CARTOON.jpeg')"; // Set to cartoon image
+    finalAvatarContainer.style.backgroundColor = document.getElementById('avatarContainer').style.backgroundColor;
+
+    // Show the final avatar display
+    document.getElementById('finalAvatarDisplay').style.display = 'block';
+}
+
+
+        // Initialize avatar container with default cartoon image on page load
+        window.onload = function() {
+            document.getElementById('avatarContainer').style.backgroundImage = "url('cartoon.jpg')";
+        }
+
+        // Function to go back to another page
+        function goBack() {
+            window.location.href = "login.html"; // Replace with your target page URL
+        }
+    </script>
+
+</body>
+</html>

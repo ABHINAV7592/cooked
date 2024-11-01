@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Diary</title>
+    <style>
+        /* General Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Full-Screen Background Image */
+        body {
+            background-image: url('diary.avif'); /* Path to your diary image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            font-family: 'Georgia', serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #5b3a29;
+        }
+
+        /* Diary Content Styling */
+        .diary-content {
+            width: 80%;  /* Increased width */
+            max-width: 700px;  /* Increased max-width */
+            padding: 30px;  /* Increased padding for more space */
+            background-color: rgba(255, 255, 255, 0.8); /* Slight transparency for readability */
+            border-radius: 12px;
+            box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .diary-content h1 {
+            font-family: 'Georgia', serif; /* Changed font for better bold rendering */
+            font-size: 2.5em;
+            color: #5b3a29;
+            text-align: center;
+            margin-bottom: 10px;
+            font-weight: bold; /* Ensured the title is bold */
+        }
+
+        .diary-content label {
+            font-size: 1.1em;
+            color: #5b3a29;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .date-and-title {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .date-and-title input[type="text"],
+        .date-and-title input[type="date"] {
+            border: none;
+            border-bottom: 1px dashed #b8a98d;
+            background-color: transparent;
+            font-family: 'Georgia', serif;
+            color: #5b3a29;
+            font-size: 1em;
+            outline: none;
+            padding: 5px;
+            width: 48%;
+        }
+
+        .lined-paper {
+            border: none;
+            width: 100%;
+            background-color: transparent;
+            padding: 10px;
+            font-family: 'Georgia', serif;
+            font-size: 1em;
+            color: #5b3a29;
+            line-height: 1.6;
+            outline: none;
+            height: 300px;  /* Increased height for more space */
+            resize: none;
+        }
+
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            font-size: 1.1em;
+            color: #fff;
+            background-color: #5b3a29;
+            border: none;
+            cursor: pointer;
+            border-radius: 6px;
+            font-family: 'Georgia', serif;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #4a2d1f;
+        }
+    </style>
+</head>
+<body>
+
+<div class="diary-content">
+    <h1>My Diary</h1>
+
+    <div class="date-and-title">
+        <input type="text" name="title" placeholder="Title">
+        <input type="date" name="date">
+    </div>
+
+    <textarea class="lined-paper" placeholder="Write your story here..."></textarea>
+
+    <button class="submit-btn">Let's See</button>
+</div>
+
+</body>
+</html>
